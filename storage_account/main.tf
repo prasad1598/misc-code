@@ -4,7 +4,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_storage_account" "tfstate" {
-  name                     = "terraform-tfstate"
+  name                     = "terraformtfstate"
   resource_group_name      = "project_rg"
   location                 = "UK West"
   account_tier             = "Standard"
