@@ -9,7 +9,7 @@ variable "tools" {
 # vault is a key & name is also a vault
 
 variable "rg_name" {
-  default = "project-setup-1"
+  default = "project_rg"
 }
 variable "location" {
   default = "UK West"
