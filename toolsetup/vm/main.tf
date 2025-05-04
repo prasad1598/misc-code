@@ -67,7 +67,7 @@ resource "null_resource" "ansible" {
     azurerm_virtual_machine.vm
   ]
   for_each = {
-    for k, v in var.tools : k => v if contains(var.deploy, k)
+    for k, v in var.tools : k => v if k == "ansible" && contains(var.deploy, k)
   }
   connection {
     type     = "ssh"
