@@ -62,7 +62,7 @@ delete_data_disks_on_termination = true
   }
 }
 
-resource "null_resource" "tool_setup" {
+resource "null_resource" "ansible" {
   depends_on = [
     azurerm_virtual_machine.vm
   ]
@@ -85,12 +85,12 @@ resource "null_resource" "tool_setup" {
   }
 }
 
-resource "null_resource" "tool_setup1" {
+resource "null_resource" "vault" {
   depends_on = [
     azurerm_virtual_machine.vm
   ]
   for_each = {
-    for k, v in var.tools : k => v if contains(var.deploy, k)
+    for k, v in var.tools : k => v if k == "vault" && contains(var.deploy, k)
   }
   connection {
     type     = "ssh"
