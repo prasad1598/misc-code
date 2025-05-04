@@ -82,7 +82,7 @@ resource "null_resource" "tool_setup" {
   }
 }
 
-resource "null_resource" "tool_setup" {
+resource "null_resource" "tool_setup1" {
   for_each = {
     for k, v in var.name : k => v if k == "vault"
   }
