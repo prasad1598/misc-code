@@ -1,6 +1,5 @@
 ansible:
-	ansible-playbook -i ${tool_name}-dev.prasaddevops.shop -e ansible_user=ec2-user -e ansible_password=DevOps321 -e tool_name=${tool_name}
-
+	ansible-playbook -i ${tool_name}-dev.prasaddevops.shop -e ansible_user=ec2-user -e ansible_password=DevOps321 tool_setup.yml -e tool_name=${tool_name}
 
 apply:
 	git pull
@@ -10,4 +9,4 @@ apply:
 destroy:
 	git pull
 	terraform init
-	terraform apply -auto-approve
+	terraform destroy -auto-approve
