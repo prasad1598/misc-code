@@ -63,6 +63,9 @@ delete_data_disks_on_termination = true
 }
 
 resource "null_resource" "tool_setup" {
+  depends_on = [
+    azurerm_virtual_machine.vm
+  ]
   for_each = {
     for k, v in var.tools : k => v if contains(var.deploy, k)
   }
@@ -83,6 +86,9 @@ resource "null_resource" "tool_setup" {
 }
 
 resource "null_resource" "tool_setup1" {
+  depends_on = [
+    azurerm_virtual_machine.vm
+  ]
   for_each = {
     for k, v in var.tools : k => v if contains(var.deploy, k)
   }
