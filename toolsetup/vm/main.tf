@@ -1,5 +1,5 @@
 resource "azurerm_public_ip" "public-ip" {
-  name                = var.name
+  name                = "${var.name}-pub"
   resource_group_name = var.rg_name
   location            = var.location
   sku                 = "Basic"
