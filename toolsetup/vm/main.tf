@@ -108,7 +108,8 @@ resource "null_resource" "vault" {
 }
 
 resource "azurerm_dns_a_record" "private_dns_record" {
-  name                = "${var.tools}-int"
+  for_each            = var.tools
+  name                = "${each.key}-int"
   zone_name           = "prasaddevops.shop"
   resource_group_name = var.rg_name
   ttl                 = 3
@@ -116,7 +117,8 @@ resource "azurerm_dns_a_record" "private_dns_record" {
 }
 
 resource "azurerm_dns_a_record" "public_dns_record" {
-  name                = "${var.tools}-dev"
+  for_each            = var.tools
+  name                = "${each.key}-dev"
   zone_name           = "prasaddevops.shop"
   resource_group_name = var.rg_name
   ttl                 = 3
