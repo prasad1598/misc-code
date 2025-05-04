@@ -8,4 +8,5 @@ module "tools" {
   location = var.location
   vm_size  = each.value["vm_size"]
   tools    = var.tools
+  deploy   = var.deploy
 }
