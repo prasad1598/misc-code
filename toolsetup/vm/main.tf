@@ -102,7 +102,7 @@ resource "null_resource" "vault" {
     inline = [
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
-      "ansible-playbook -i ${tool_name}-dev.prasaddevops.shop -e ansible_user=azuser -e ansible_password=Devops@12345 tool_setup.yml -e tool_name=${tool_name}"
+      "ansible-playbook -i ${tool_name}-dev.prasaddevops.shop -e ansible_user=azuser -e ansible_password=Devops@12345 tool_setup.yml"
     ]
   }
 }
