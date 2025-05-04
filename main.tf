@@ -1,7 +1,5 @@
 module "tools" {
-  for_each = {
-    for k, v in var.tools : k => v if contains(var.deploy, k)
-  }
+  for_each = var.tools
   source   = "./toolsetup/vm"
   name     = each.key
   rg_name  = var.rg_name

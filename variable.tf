@@ -6,16 +6,13 @@
 # #   default = ["ansible"]
 # # }
 #
-# variable "tools" {
-#   default = {
-#     vault = {
-#       vm_size = "Standard_B1s"
-#     }
-#     ansible = {
-#       vm_size = "Standard_B2s"
-#     }
-#   }
-# }
+variable "tools" {
+  default = {
+    vault = {
+      vm_size = "Standard_B1s"
+    }
+  }
+}
 
 # tools = {
 #   vault = {}
