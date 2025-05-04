@@ -1,21 +1,21 @@
-variable "deploy" {
-  default = ["vault"]
-}
-
 # variable "deploy" {
-#   default = ["ansible"]
+#   default = ["vault"]
 # }
-
-variable "tools" {
-  default = {
-    vault = {
-      vm_size = "Standard_B1s"
-    }
-    ansible = {
-      vm_size = "Standard_B2s"
-    }
-  }
-}
+#
+# # variable "deploy" {
+# #   default = ["ansible"]
+# # }
+#
+# variable "tools" {
+#   default = {
+#     vault = {
+#       vm_size = "Standard_B1s"
+#     }
+#     ansible = {
+#       vm_size = "Standard_B2s"
+#     }
+#   }
+# }
 
 # tools = {
 #   vault = {}
