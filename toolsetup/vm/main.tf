@@ -64,7 +64,7 @@ delete_data_disks_on_termination = true
 
 resource "null_resource" "tool_setup" {
   for_each = {
-    for k, v in var.name : k => v if k == "ansible"
+    for k, v in var.tools : k => v if k == "ansible"
   }
   connection {
     type     = "ssh"
@@ -84,7 +84,7 @@ resource "null_resource" "tool_setup" {
 
 resource "null_resource" "tool_setup1" {
   for_each = {
-    for k, v in var.name : k => v if k == "vault"
+    for k, v in var.tools : k => v if k == "vault"
   }
   connection {
     type     = "ssh"
