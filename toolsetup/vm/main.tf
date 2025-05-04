@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.3"
+    }
+  }
+}
 resource "azurerm_public_ip" "public-ip" {
   name                = "${var.name}-pub"
   resource_group_name = var.rg_name
@@ -51,5 +59,44 @@ delete_data_disks_on_termination = true
   }
   os_profile_linux_config {
     disable_password_authentication = false
+  }
+}
+
+resource "null_resource" "tool_setup" {
+  for_each = {
+    for k, v in var.name : k => v if k == "ansible"
+  }
+  connection {
+    type     = "ssh"
+    user     = "azuser"
+    password = "Devops@12345"
+    host     = azurerm_network_interface.private-ip.private_ip_address
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo dnf install python3.12 python3.12-pip -y",
+      "sudo pip3.12 install ansible",
+      "ansible-playbook -i localhost, -e tool_name=tool_name"
+    ]
+  }
+}
+
+resource "null_resource" "tool_setup" {
+  for_each = {
+    for k, v in var.name : k => v if k == "vault"
+  }
+  connection {
+    type     = "ssh"
+    user     = "azuser"
+    password = "Devops@12345"
+    host     = azurerm_network_interface.private-ip.private_ip_address
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum install -y yum-utils",
+      "sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo",
+      "sudo yum -y install vault"
+    ]
   }
 }

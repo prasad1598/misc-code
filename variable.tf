@@ -1,9 +1,17 @@
+variable "deploy" {
+  default = ["vault"]
+}
+
+# variable "deploy" {
+#   default = ["ansible"]
+# }
+
 variable "tools" {
   default = {
     vault = {
       vm_size = "Standard_B1s"
     }
-    workstation-1 = {
+    ansible-1 = {
       vm_size = "Standard_B2s"
     }
   }
