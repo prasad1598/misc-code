@@ -22,3 +22,4 @@
   ansible.builtin.services:
     name: vault
     state: restarted
+    enabled: yes

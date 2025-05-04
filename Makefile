@@ -1,5 +1,6 @@
 ansible:
-	ansible-playbook -i ${tool_name}-dev.prasaddevops.shop -e ansible_user=ec2-user -e ansible_password=DevOps321 tool_setup.yml -e tool_name=${tool_name}
+	git pull
+	ansible-playbook -i ${tool_name}-dev.prasaddevops.shop -e ansible_user=azuser -e ansible_password=Devops@12345 tool_setup.yml -e tool_name=${tool_name}
 
 apply:
 	git pull
