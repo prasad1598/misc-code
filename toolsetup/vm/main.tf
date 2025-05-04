@@ -25,7 +25,7 @@ resource "azurerm_network_interface_security_group_association" "nsg" {
 }
 
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "${var.name}-vm"
+  name                  = var.name
   location              = var.location
   resource_group_name   = var.rg_name
   network_interface_ids = [azurerm_network_interface.private-ip.id]
@@ -96,7 +96,7 @@ resource "null_resource" "vault" {
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
       "git clone https://github.com/prasad1598/misc-code.git",
-      "cd misc-code && ansible-playbook -i vault-dev.prasaddevops.shop tool_setup.yml"
+      "ansible-pull -i localhost, -U https://github.com/prasad1598/misc-code tool_setup.yml -e tool_name=$(tool_name)"
     ]
   }
 }
