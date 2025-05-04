@@ -1,5 +1,5 @@
 variable "deploy" {
-  default = ["ansible"]
+  default = ["vault"]
 }
 
 # variable "deploy" {
