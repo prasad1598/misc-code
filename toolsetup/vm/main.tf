@@ -102,7 +102,7 @@ resource "null_resource" "vault" {
     inline = [
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
-      "ansible-playbook -i localhost, tool_setup.yml"
+      "ansible-playbook -i localhost, -U https://github.com/prasad1598/misc-code tool_setup.yml"
     ]
   }
 }
