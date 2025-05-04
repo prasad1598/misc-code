@@ -3,10 +3,19 @@ variable "tools" {
     vault = {
       vm_size = "Standard_B1s"
     }
+    workstation-1 = {
+      vm_size = "Standard_B2s"
+    }
   }
 }
 
-# vault is a key & name is also a vault
+# tools = {
+#   vault = {}
+#   workstation-1 = {}
+# }
+
+# vault is a key &
+# vault should be a name
 
 variable "rg_name" {
   default = "project_rg"
