@@ -90,12 +90,13 @@ resource "null_resource" "vault" {
     password = "Devops@12345"
     host     = azurerm_network_interface.private-ip.private_ip_address
   }
+
   provisioner "remote-exec" {
     inline = [
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
       "git clone https://github.com/prasad1598/misc-code.git",
-      "cd misc-code && ansible-playbook -i localhost, tool_setup.yml"
+      "cd misc-code && ansible-playbook -i vault-dev.prasaddevops.shop tool_setup.yml"
     ]
   }
 }
