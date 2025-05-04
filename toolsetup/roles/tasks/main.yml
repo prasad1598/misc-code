@@ -7,3 +7,18 @@
   ansible.builtin.get_url:
     url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
     dest: /etc/yum.repos.d/hashicorp.repo
+
+- name: install vault
+  ansible.builtin.dnf:
+    name: vault
+    state: installed
+
+- name: copy file
+  ansible.builtin.copy:
+    src: vault.hcl
+    dest: /etc/vault.d/vault.hcl
+
+- name: service start
+  ansible.builtin.services:
+    name: vault
+    state: restarted
