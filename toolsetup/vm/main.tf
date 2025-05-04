@@ -44,9 +44,9 @@ delete_data_disks_on_termination = true
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "hostname"
-    admin_username = "testadmin"
-    admin_password = "Password1234!"
+    computer_name  = var.name
+    admin_username = "azuser"
+    admin_password = "Devops@12345"
   }
   os_profile_linux_config {
     disable_password_authentication = false
