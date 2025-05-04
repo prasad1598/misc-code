@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    null = {
-      source  = "hashicorp/null"
-      version = "3.2.3"
-    }
-  }
-}
 resource "azurerm_public_ip" "public-ip" {
   name                = "${var.name}-pub"
   resource_group_name = var.rg_name
@@ -62,36 +54,36 @@ delete_data_disks_on_termination = true
   }
 }
 
-resource "null_resource" "ansible" {
-  depends_on = [
-    azurerm_virtual_machine.vm
-  ]
-  for_each = {
-    for k, v in var.tools : k => v if contains(var.deploy, k)
-  }
-  connection {
-    type     = "ssh"
-    user     = "azuser"
-    password = "Devops@12345"
-    host     = azurerm_network_interface.private-ip.private_ip_address
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo dnf install python3.12 python3.12-pip -y",
-      "sudo pip3.12 install ansible",
-      # "ansible-playbook -i localhost, -e tool_name=tool_name"
-    ]
-  }
-}
+# resource "null_resource" "ansible" {
+#   depends_on = [
+#     azurerm_virtual_machine.vm
+#   ]
+#   for_each = {
+#     for k, v in var.tools : k => v if contains(var.deploy, k)
+#   }
+#   connection {
+#     type     = "ssh"
+#     user     = "azuser"
+#     password = "Devops@12345"
+#     host     = azurerm_network_interface.private-ip.private_ip_address
+#   }
+#
+#   provisioner "remote-exec" {
+#     inline = [
+#       "sudo dnf install python3.12 python3.12-pip -y",
+#       "sudo pip3.12 install ansible",
+#       # "ansible-playbook -i localhost, -e tool_name=tool_name"
+#     ]
+#   }
+# }
 
 resource "null_resource" "vault" {
   depends_on = [
     azurerm_virtual_machine.vm
   ]
-  for_each = {
-    for k, v in var.tools : k => v if k == "vault" && contains(var.deploy, k)
-  }
+  # for_each = {
+  #   for k, v in var.tools : k => v if k == "vault" && contains(var.deploy, k)
+  # }
   connection {
     type     = "ssh"
     user     = "azuser"
