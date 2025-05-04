@@ -1,0 +1,9 @@
+#  sudo yum install -y yum-utils
+#  sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+#  sudo yum -y install vault
+
+
+- name: Download repo file
+  ansible.builtin.get_url:
+    url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    dest: /etc/yum.repos.d/hashicorp.repo

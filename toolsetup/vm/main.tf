@@ -80,7 +80,7 @@ resource "null_resource" "ansible" {
     inline = [
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
-      "ansible-playbook -i localhost, -e tool_name=tool_name"
+      # "ansible-playbook -i localhost, -e tool_name=tool_name"
     ]
   }
 }
@@ -100,9 +100,25 @@ resource "null_resource" "vault" {
   }
   provisioner "remote-exec" {
     inline = [
-      "sudo yum install -y yum-utils",
-      "sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo",
-      "sudo yum -y install vault"
+      "sudo dnf install python3.12 python3.12-pip -y",
+      "sudo pip3.12 install ansible",
+      "ansible-playbook -i localhost, -U https://github.com/prasad1598/misc-code.git -e tool_name=${tool_name}"
     ]
   }
+}
+
+resource "azurerm_dns_a_record" "private_dns_record" {
+  name                = "${var.tools}-int"
+  zone_name           = "prasaddevops.shop"
+  resource_group_name = var.rg_name
+  ttl                 = 3
+  records             = [azurerm_public_ip.public-ip.ip_address]
+}
+
+resource "azurerm_dns_a_record" "public_dns_record" {
+  name                = "${var.tools}-dev"
+  zone_name           = "prasaddevops.shop"
+  resource_group_name = var.rg_name
+  ttl                 = 3
+  records             = [azurerm_network_interface.private-ip.private_ip_address]
 }
