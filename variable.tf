@@ -11,7 +11,7 @@ variable "tools" {
     vault = {
       vm_size = "Standard_B1s"
     }
-    ansible-1 = {
+    ansible = {
       vm_size = "Standard_B2s"
     }
   }
