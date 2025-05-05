@@ -21,4 +21,4 @@
 
 - name: install hvac
   ansible.builtin.debug:
-    msg: hvsc
+    msg: pip3.12 install hvsc
