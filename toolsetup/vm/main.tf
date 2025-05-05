@@ -113,7 +113,7 @@ resource "azurerm_dns_a_record" "private_dns_record" {
 
 resource "azurerm_dns_a_record" "public_dns_record" {
   depends_on          = [azurerm_linux_virtual_machine.vm]
-  name                = "${var.name}-dev"
+  name                = "${var.name}"
   zone_name           = "prasaddevops.shop"
   resource_group_name = var.rg_name
   ttl                 = 3
