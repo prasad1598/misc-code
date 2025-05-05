@@ -79,13 +79,14 @@ resource "azurerm_dns_a_record" "private_dns_record" {
   zone_name           = "prasaddevops.shop"
   resource_group_name = var.rg_name
   ttl                 = 3
-  records             = [azurerm_public_ip.public-ip.ip_address]
+  records             = [azurerm_network_interface.private-ip.private_ip_address]
 }
 
 resource "azurerm_dns_a_record" "public_dns_record" {
+  depends_on          = [azurerm_virtual_machine.vm]
   name                = "${var.name}-dev"
   zone_name           = "prasaddevops.shop"
   resource_group_name = var.rg_name
   ttl                 = 3
-  records             = [azurerm_network_interface.private-ip.private_ip_address]
+  records             = [azurerm_public_ip.public-ip.ip_address]
 }
