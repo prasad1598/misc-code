@@ -15,4 +15,4 @@ destroy:
 command:
 	make ansible tool_name=vault
 
-/usr/local/bin/
+#	/usr/local/bin/
