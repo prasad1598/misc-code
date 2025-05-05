@@ -77,7 +77,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     source_image_id = "/subscriptions/aa32da49-0603-4855-b55b-bfd4bcf7b16f/resourceGroups/project_rg/providers/Microsoft.Compute/images/test-devops-practice"
 
   #spot details
-  priority        = "spot"
+  priority        = "Spot"
   max_bid_price   = -1
   eviction_policy = "Deallocate"
 }
