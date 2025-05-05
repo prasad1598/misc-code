@@ -24,69 +24,69 @@ resource "azurerm_network_interface_security_group_association" "nsg" {
   network_security_group_id = "/subscriptions/aa32da49-0603-4855-b55b-bfd4bcf7b16f/resourceGroups/project_rg/providers/Microsoft.Network/networkSecurityGroups/project_nsg"
 }
 
-resource "azurerm_virtual_machine" "vm" {
-  name                  = var.name
-  location              = var.location
-  resource_group_name   = var.rg_name
-  network_interface_ids = [azurerm_network_interface.private-ip.id]
-  vm_size               = var.vm_size
-
-delete_os_disk_on_termination = true
-
-delete_data_disks_on_termination = true
-
-  storage_image_reference {
-    id = "/subscriptions/aa32da49-0603-4855-b55b-bfd4bcf7b16f/resourceGroups/project_rg/providers/Microsoft.Compute/images/test-devops-practice"
-  }
-  storage_os_disk {
-    name              = "myosdisk1"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
-  }
-  os_profile {
-    computer_name  = var.name
-    admin_username = "azuser"
-    admin_password = "Devops@12345"
-  }
-  os_profile_linux_config {
-    disable_password_authentication = false
-  }
-}
-
-############# We moved to spot instance for saving the cost#######################################
-
-# resource "azurerm_linux_virtual_machine" "vm" {
-#   name                = "example-machine"
-#   resource_group_name = var.rg_name
-#   location            = var.location
-#   size                = var.vm_size
-#   admin_username      = "azuser"
-#   network_interface_ids = [
-#     azurerm_network_interface.private-ip.id]
+# resource "azurerm_virtual_machine" "vm" {
+#   name                  = var.name
+#   location              = var.location
+#   resource_group_name   = var.rg_name
+#   network_interface_ids = [azurerm_network_interface.private-ip.id]
+#   vm_size               = var.vm_size
 #
-#   os_disk {
-#     name                 = "${var.name}-disk"
-#     caching              = "ReadWrite"
-#     storage_account_type = "Standard_LRS"
-#   }
-#   delete_os_disk_on_termination = true
+# delete_os_disk_on_termination = true
 #
-#   delete_data_disks_on_termination = true
+# delete_data_disks_on_termination = true
 #
 #   storage_image_reference {
 #     id = "/subscriptions/aa32da49-0603-4855-b55b-bfd4bcf7b16f/resourceGroups/project_rg/providers/Microsoft.Compute/images/test-devops-practice"
 #   }
-#
-#   #spot details
-#   priority        = "spot"
-#   max_bid_price   = -1
-#   eviction_policy = "Deallocate"
+#   storage_os_disk {
+#     name              = "myosdisk1"
+#     caching           = "ReadWrite"
+#     create_option     = "FromImage"
+#     managed_disk_type = "Standard_LRS"
+#   }
+#   os_profile {
+#     computer_name  = var.name
+#     admin_username = "azuser"
+#     admin_password = "Devops@12345"
+#   }
+#   os_profile_linux_config {
+#     disable_password_authentication = false
+#   }
 # }
+
+############# We moved to spot instance for saving the cost#######################################
+
+resource "azurerm_linux_virtual_machine" "vm" {
+  name                = "example-machine"
+  resource_group_name = var.rg_name
+  location            = var.location
+  size                = var.vm_size
+  admin_username      = "azuser"
+  network_interface_ids = [
+    azurerm_network_interface.private-ip.id]
+
+  os_disk {
+    name                 = "${var.name}-disk"
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+  delete_os_disk_on_termination = true
+
+  delete_data_disks_on_termination = true
+
+  storage_image_reference {
+    id = "/subscriptions/aa32da49-0603-4855-b55b-bfd4bcf7b16f/resourceGroups/project_rg/providers/Microsoft.Compute/images/test-devops-practice"
+  }
+
+  #spot details
+  priority        = "spot"
+  max_bid_price   = -1
+  eviction_policy = "Deallocate"
+}
 
 resource "null_resource" "vault" {
   depends_on = [
-    azurerm_virtual_machine.vm
+    azurerm_linux_virtual_machine.vm
   ]
   connection {
     type     = "ssh"
@@ -113,7 +113,7 @@ resource "azurerm_dns_a_record" "private_dns_record" {
 }
 
 resource "azurerm_dns_a_record" "public_dns_record" {
-  depends_on          = [azurerm_virtual_machine.vm]
+  depends_on          = [azurerm_linux_virtual_machine.vm]
   name                = "${var.name}-dev"
   zone_name           = "prasaddevops.shop"
   resource_group_name = var.rg_name
