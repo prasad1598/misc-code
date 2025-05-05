@@ -1,6 +1,6 @@
 ansible:
 	git pull
-	sudo /usr/local/bin/ansible-playbook -i ${tool_name}-int.prasaddevops.shop, -e ansible_user=azuser -e ansible_password=Devops@12345 tool_setup.yml -e tool_name=${tool_name}
+	sudo ansible-playbook -i ${tool_name}-int.prasaddevops.shop, -e ansible_user=azuser -e ansible_password=Devops@12345 tool_setup.yml -e tool_name=${tool_name}
 
 apply:
 	git pull
@@ -14,3 +14,5 @@ destroy:
 
 command:
 	make ansible tool_name=vault
+
+/usr/local/bin/
