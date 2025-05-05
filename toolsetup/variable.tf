@@ -1,11 +1,3 @@
-# variable "deploy" {
-#   default = ["vault"]
-# }
-#
-# # variable "deploy" {
-# #   default = ["ansible"]
-# # }
-#
 variable "tools" {
   default = {
     vault = {
@@ -13,14 +5,6 @@ variable "tools" {
     }
   }
 }
-
-# tools = {
-#   vault = {}
-#   workstation-1 = {}
-# }
-
-# vault is a key &
-# vault should be a name
 
 variable "rg_name" {
   default = "project_rg"
