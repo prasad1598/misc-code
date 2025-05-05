@@ -11,3 +11,6 @@ destroy:
 	git pull
 	terraform init
 	terraform destroy -auto-approve
+
+command:
+	make ansible tool_name=vault
