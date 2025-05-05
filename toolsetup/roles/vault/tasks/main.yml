@@ -18,3 +18,7 @@
     name: vault
     state: restarted
     enabled: yes
+
+- name: install hvac
+  ansible.builtin.debug:
+    msg: hvsc
