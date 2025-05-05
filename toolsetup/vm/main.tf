@@ -57,13 +57,14 @@ resource "azurerm_network_interface_security_group_association" "nsg" {
 ############# We moved to spot instance for saving the cost#######################################
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  name                = "example-machine"
-  resource_group_name = var.rg_name
-  location            = var.location
-  size                = var.vm_size
-  admin_username      = "azuser"
-  network_interface_ids = [
-    azurerm_network_interface.private-ip.id]
+  name                            = var.name
+  resource_group_name             = var.rg_name
+  location                        = var.location
+  size                            = var.vm_size
+  admin_username                  = "azuser"
+  admin_password                  = "Devops@12345"
+  disable_password_authentication = false
+  network_interface_ids           = [azurerm_network_interface.private-ip.id]
 
   os_disk {
     name                 = "${var.name}-disk"
