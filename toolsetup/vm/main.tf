@@ -70,13 +70,13 @@ resource "null_resource" "vault" {
     inline = [
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
-      "ansible-pull -i localhost, -U https://github.com/prasad1598/misc-code tool_setup.yml -e tool_name=$(tool_name)"
+      "ansible-pull -i localhost, -U https://github.com/prasad1598/misc-code/toolsetup tool_setup.yml -e tool_name=$(tool_name)"
     ]
   }
 }
 
 resource "azurerm_dns_a_record" "private_dns_record" {
-  for_each            = var.tools
+  for_each            = var.tool_name
   name                = "${var.name}-int"
   zone_name           = "prasaddevops.shop"
   resource_group_name = var.rg_name
@@ -85,7 +85,7 @@ resource "azurerm_dns_a_record" "private_dns_record" {
 }
 
 resource "azurerm_dns_a_record" "public_dns_record" {
-  for_each            = var.tools
+  for_each            = var.tool_name
   name                = "${var.name}-dev"
   zone_name           = "prasaddevops.shop"
   resource_group_name = var.rg_name
