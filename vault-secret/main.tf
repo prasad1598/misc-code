@@ -5,3 +5,11 @@ resource "vault_mount" "kv" {
   options     = { version = "2" }
   description = each.value["description"]
 }
+
+resource "vault_kv_secret_v2" "values" {
+  depends_on = [vault_mount.kv]
+  for_each   = var.values["secret"]
+  mount      = vault_mount.kv.path
+  name       = each.key
+  data_json  = jsonencode(each.value["value"])
+}

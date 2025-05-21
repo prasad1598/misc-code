@@ -10,3 +10,15 @@ variable "secrets" {
     }
   }
 }
+
+variable "values" {
+  default = {
+    ssh = {
+      secret = "Roboshop-infra"
+      values = {
+        username      = "azuser",
+        password       = "Devops@12345"
+      }
+    }
+  }
+}
