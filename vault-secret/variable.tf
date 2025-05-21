@@ -16,6 +16,22 @@ variable "values" {
     ssh = {
       secret = "roboshop-infra"
       value = {
+        username = "azuser",
+        password = "Devops@12345"
+      }
+    }
+
+    frontend = {
+      secret = "roboshop-infra"
+      value = {
+        username = "azuser",
+        password = "Devops@12345"
+      }
+    }
+
+    ssh = {
+      secret = "roboshop-infra"
+      value = {
         username      = "azuser",
         password       = "Devops@12345"
       }
