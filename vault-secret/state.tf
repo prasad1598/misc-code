@@ -1,5 +1,5 @@
 provider "vault" {
-  address = "https://vault-int.prasaddevops.shop:8200"
+  address = "http://vault-int.prasaddevops.shop:8200"
   token   = var.token
 }
 
