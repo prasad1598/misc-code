@@ -3,6 +3,7 @@ provider "vault" {
   token   = var.token
 }
 
+
 terraform {
   backend "azurerm" {
     use_cli              = true
