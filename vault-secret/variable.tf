@@ -1,6 +1,6 @@
 variable "token" {}
 
-variable "secret" {
+variable "secrets" {
   default = {
     Roboshop-dev = {
       description = "RobeShop App Component All secrets"
