@@ -2,10 +2,10 @@ variable "token" {}
 
 variable "secrets" {
   default = {
-    Roboshop-dev = {
+    roboshop-dev = {
       description = "RobeShop App Component All secrets"
     }
-    Roboshop-infra = {
+    roboshop-infra = {
       description = "Roboshop Infra related secrets"
     }
   }
