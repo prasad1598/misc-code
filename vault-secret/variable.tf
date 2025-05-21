@@ -29,7 +29,7 @@ variable "values" {
       }
     }
 
-    ssh = {
+    catalauge = {
       secret = "roboshop-infra"
       value = {
         username      = "azuser",
