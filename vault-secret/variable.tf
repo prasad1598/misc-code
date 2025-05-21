@@ -14,7 +14,7 @@ variable "secrets" {
 variable "values" {
   default = {
     ssh = {
-      secret = "Roboshop-infra"
+      secret = "roboshop-infra"
       value = {
         username      = "azuser",
         password       = "Devops@12345"
