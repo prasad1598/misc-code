@@ -81,12 +81,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   priority        = "Spot"
   max_bid_price   = -1
   eviction_policy = "Deallocate"
-}
 
-resource "null_resource" "vault" {
-  depends_on = [
-    azurerm_linux_virtual_machine.vm
-  ]
   connection {
     type     = "ssh"
     user     = "azuser"
@@ -102,6 +97,26 @@ resource "null_resource" "vault" {
     ]
   }
 }
+
+# resource "null_resource" "vault" {
+#   depends_on = [
+#     azurerm_linux_virtual_machine.vm
+#   ]
+#   connection {
+#     type     = "ssh"
+#     user     = "azuser"
+#     password = "Devops@12345"
+#     host     = azurerm_network_interface.private-ip.private_ip_address
+#   }
+#
+#   provisioner "remote-exec" {
+#     inline = [
+#       "sudo dnf install python3.12 python3.12-pip -y",
+#       "sudo pip3.12 install ansible hvac",
+#       "sudo /usr/local/bin/ansible-pull -i localhost, -U https://github.com/prasad1598/misc-code.git toolsetup/tool_setup.yml -e tool_name=vault"
+#     ]
+#   }
+# }
 
 resource "azurerm_dns_a_record" "private_dns_record" {
   depends_on          = [azurerm_linux_virtual_machine.vm]
