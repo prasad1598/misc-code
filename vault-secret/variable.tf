@@ -24,11 +24,11 @@ variable "values" {
     frontend = {
       secret = "roboshop-infra"
       value = {
-        catalogue_url = "http://catalogue-dev.prasaddevops.shop:8080",
-        user_url      = "http://user-dev.prasaddevops.shop:8080",
-        cart_url      = "http://cart-dev.prasaddevops.shop:8080",
-        shipping_url  = "http://shipping-dev.prasaddevops.shop:8080",
-        payment_url   = "http://payment-dev.prasaddevops.shop:8080"
+        catalogue_url = "http://catalogue-dev.prasaddevops.shop:8080/",
+        user_url      = "http://user-dev.prasaddevops.shop:8080/",
+        cart_url      = "http://cart-dev.prasaddevops.shop:8080/",
+        shipping_url  = "http://shipping-dev.prasaddevops.shop:8080/",
+        payment_url   = "http://payment-dev.prasaddevops.shop:8080/"
       }
     }
 
