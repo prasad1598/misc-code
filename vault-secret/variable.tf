@@ -102,7 +102,7 @@ variable "values" {
     mysql = {
       secret = "roboshop-infra"
       value = {
-        root-pass = "RoboShop@1"
+        password = "RoboShop@1"
       }
     }
   }
