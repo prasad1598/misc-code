@@ -42,7 +42,7 @@ variable "values" {
       }
     }
 
-    catalague = {
+    catalogue = {
       secret = "roboshop-infra"
       value = {
         MONGO     = "true"
