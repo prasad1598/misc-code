@@ -42,10 +42,10 @@ variable "values" {
       }
     }
 
-    catalauge = {
+    catalague = {
       secret = "roboshop-infra"
       value = {
-        MONGO     = true
+        MONGO     = "true"
         MONGO_URL = "mongodb://mongodb-dev.prasaddevops.shop:27017/catalogue"
         DB_TYPE = "mongo"
         APP_GIT_URL = "https://github.com/roboshop-devops-project-v3/catalogue"
@@ -66,7 +66,7 @@ variable "values" {
     user = {
       secret = "roboshop-infra"
       value = {
-        MONGO     = true
+        MONGO     = "true"
         REDIS_URL = "redis://redis-dev.prasaddevops.shop"
         MONGO_URL = "mongodb://mongodb-dev.prasaddevops.shop:27017/users"
       }
