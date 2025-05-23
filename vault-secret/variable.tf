@@ -24,19 +24,33 @@ variable "values" {
     frontend = {
       secret = "roboshop-infra"
       value = {
-        catalogue_url = "http://catalogue-dev.prasaddevops.shop:8080/",
-        user_url      = "http://user-dev.prasaddevops.shop:8080/",
-        cart_url      = "http://cart-dev.prasaddevops.shop:8080/",
-        shipping_url  = "http://shipping-dev.prasaddevops.shop:8080/",
+        catalogue_url = "http://catalogue-dev.prasaddevops.shop:8080/"
+        user_url      = "http://user-dev.prasaddevops.shop:8080/"
+        cart_url      = "http://cart-dev.prasaddevops.shop:8080/"
+        shipping_url  = "http://shipping-dev.prasaddevops.shop:8080/"
         payment_url   = "http://payment-dev.prasaddevops.shop:8080/"
+        CATALOGUE_HOST = "http://catalogue-dev.prasaddevops.shop:8080/"
+        CATALOGUE_PORT = 8080
+        USER_HOST = "http://user-dev.prasaddevops.shop:8080/"
+        USER_PORT = 8080
+        CART_HOST = "http://cart-dev.prasaddevops.shop:8080/"
+        CART_PORT = 8080
+        SHIPPING_HOST = "http://shipping-dev.prasaddevops.shop:8080/"
+        SHIPPING_PORT = 8080
+        PAYMENT_HOST = "http://payment-dev.prasaddevops.shop:8080/"
+        PAYMENT_PORT = 8080
       }
     }
 
     catalauge = {
       secret = "roboshop-infra"
       value = {
-        MONGO     = true,
+        MONGO     = true
         MONGO_URL = "mongodb://mongodb-dev.prasaddevops.shop:27017/catalogue"
+        DB_TYPE = "mongo"
+        APP_GIT_URL = "https://github.com/roboshop-devops-project-v3/catalogue"
+        DB_HOST: "http://mongodb-dev.prasaddevops.shop:8080/"
+        SCHEMA_FILE = "db/master-data.js"
       }
     }
 
@@ -88,6 +102,8 @@ variable "values" {
         DB_HOST       = "mysql-dev.prasaddevops.shop"
         user          = "root"
         password      = "RoboShop@1"
+        DB_USER       = "root"
+        DB_PASS       = "RoboShop@1"
       }
     }
 
