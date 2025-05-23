@@ -29,15 +29,15 @@ variable "values" {
         cart_url      = "http://cart-dev.prasaddevops.shop:8080/"
         shipping_url  = "http://shipping-dev.prasaddevops.shop:8080/"
         payment_url   = "http://payment-dev.prasaddevops.shop:8080/"
-        CATALOGUE_HOST = "http://catalogue-dev.prasaddevops.shop:8080/"
+        CATALOGUE_HOST = "catalogue-dev.prasaddevops.shop"
         CATALOGUE_PORT = 8080
-        USER_HOST = "http://user-dev.prasaddevops.shop:8080/"
+        USER_HOST = "user-dev.prasaddevops.shop"
         USER_PORT = 8080
-        CART_HOST = "http://cart-dev.prasaddevops.shop:8080/"
+        CART_HOST = "cart-dev.prasaddevops.shop"
         CART_PORT = 8080
-        SHIPPING_HOST = "http://shipping-dev.prasaddevops.shop:8080/"
+        SHIPPING_HOST = "shipping-dev.prasaddevops.shop"
         SHIPPING_PORT = 8080
-        PAYMENT_HOST = "http://payment-dev.prasaddevops.shop:8080/"
+        PAYMENT_HOST = "payment-dev.prasaddevops.shop"
         PAYMENT_PORT = 8080
       }
     }
