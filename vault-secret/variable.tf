@@ -49,7 +49,7 @@ variable "values" {
         MONGO_URL = "mongodb://mongodb-dev.prasaddevops.shop:27017/catalogue"
         DB_TYPE = "mongo"
         APP_GIT_URL = "https://github.com/roboshop-devops-project-v3/catalogue"
-        DB_HOST: "http://mongodb-dev.prasaddevops.shop:8080/"
+        DB_HOST: "mongodb-dev.prasaddevops.shop"
         SCHEMA_FILE = "db/master-data.js"
       }
     }
@@ -67,17 +67,8 @@ variable "values" {
       secret = "roboshop-infra"
       value = {
         MONGO     = "true"
-        REDIS_URL = "redis://redis-dev.prasaddevops.shop"
+        REDIS_URL = "redis://redis-dev.prasaddevops.shop:6379"
         MONGO_URL = "mongodb://mongodb-dev.prasaddevops.shop:27017/users"
-      }
-    }
-
-    dispatch = {
-      secret = "roboshop-infra"
-      value = {
-        AMQP_HOST = "rabbitmq-devprasaddevops.shop"
-        AMQP_USER = "roboshop"
-        AMQP_PASS = "roboshop123"
       }
     }
 
@@ -93,7 +84,6 @@ variable "values" {
         AMQP_PASS = "roboshop123"
       }
     }
-
 
     shipping = {
       secret = "roboshop-infra"
